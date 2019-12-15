@@ -1,0 +1,19 @@
+<template>
+  <require from="./app.scss"></require>
+  <require from="bootstrap/dist/css/bootstrap.min.css"></require>
+  
+  <div class="app">
+    <h1>Test</h1>
+    <validatable-selectize-tag 
+    placeholder="Tags" 
+    value.bind="model.values" 
+    errors.bind="errors.tag_name"
+    label="Tags"
+    type="text"
+    help-text="You can enter multiple tags, use comma [,] as delimiter">
+    </validatable-selectize-tag>
+  </div>
+  <div>
+    Model: ${model.values}
+  </div>
+</template>
