@@ -14,6 +14,11 @@ export class ValidatableSelectizeTag {
     @bindable helpText = '';
     @bindable hasFocus = false;
     @bindable disabled = false;
+    options = [
+        {id: 1, title: 'DIY', url: 'https://diy.org'},
+        {id: 2, title: 'Google', url: 'http://google.com'},
+        {id: 3, title: 'Yahoo', url: 'http://yahoo.com'}
+    ];
 
     constructor(element) {
         this.element = element;
@@ -26,11 +31,7 @@ export class ValidatableSelectizeTag {
             maxItems: null,
             valueField: 'id',
             searchField: 'title',
-            options: [
-                {id: 1, title: 'DIY', url: 'https://diy.org'},
-                {id: 2, title: 'Google', url: 'http://google.com'},
-                {id: 3, title: 'Yahoo', url: 'http://yahoo.com'},
-            ],
+            options: this.options,
             render: {
                 option: function(data, escape) {
                     return '<div class="option">' +
@@ -39,7 +40,7 @@ export class ValidatableSelectizeTag {
                         '</div>';
                 },
                 item: function(data, escape) {
-                    return '<div class="item"><a href="' + escape(data.url) + '">' + escape(data.title) + '</a></div>';
+                    return '<div class="item">' + escape(data.title) + '</div>';
                 }
             },
             onChange: function(value) {

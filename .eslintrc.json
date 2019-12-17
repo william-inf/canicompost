@@ -17,5 +17,8 @@
     "browser": true,
     "node": true,
     "jest": true
+  },
+  "globals": {
+    "$" : true
   }
 }

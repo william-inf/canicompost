@@ -3,17 +3,22 @@
   <require from="bootstrap/dist/css/bootstrap.min.css"></require>
   
   <div class="app">
-    <h1>Test</h1>
-    <validatable-selectize-tag 
-    placeholder="Tags" 
-    value.bind="model.values" 
-    errors.bind="errors.tag_name"
-    label="Tags"
-    type="text"
-    help-text="You can enter multiple tags, use comma [,] as delimiter">
-    </validatable-selectize-tag>
-  </div>
-  <div>
-    Model: ${model.values}
+    <header>
+      <div slot="content">
+        <validatable-selectize-tag 
+          placeholder="Tags" 
+          value.bind="model.value" 
+          errors.bind="errors.tag_name"
+          label="Tags"
+          type="text"
+          help-text="You can enter multiple tags, use comma [,] as delimiter">
+        </validatable-selectize-tag>
+      </div>
+    </header>
+    <content-body>
+      <div slot="content">
+        ${model.value}
+      </div>
+    </content-body>
   </div>
 </template>
