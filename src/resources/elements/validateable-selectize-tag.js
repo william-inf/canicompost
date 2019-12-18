@@ -45,13 +45,14 @@ export class ValidatableSelectizeTag {
             onChange: (value) => {
                 this.value = value;
             },
-            onType: () => {
+            onType: (str) => {
                 // this.displayEmptyResultsMessage();
                 // this.searched = (str.length == 0);
                 let selector = $(this.selector)[0].selectize;
                 if (selector.hasOptions || !selector.lastQuery) {
                     this.hideEmptyResultsMessage();
                   } else {
+                    this.currentText = str;
                     this.displayEmptyResultsMessage();
                   }
             }
