@@ -1,5 +1,6 @@
 // To support async/await
 import 'regenerator-runtime/runtime';
+import 'scripts/selectize-config';
 
 export function configure(aurelia) {
   aurelia.use.feature('resources');

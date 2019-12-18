@@ -1,61 +1,79 @@
 
 import { bindable, bindingMode, inject } from 'aurelia-framework';
 import $ from 'jquery';
-import selectize from 'selectize';
+import 'selectize';
 
 @inject(Element)
 export class ValidatableSelectizeTag {
     @bindable({ defaultBindingMode: bindingMode.twoWay }) value;
+    @bindable({ defaultBindingMode: bindingMode.twoWay }) searched;
     @bindable errors;
     @bindable label;
     @bindable name;
-    @bindable placeholder = '';
-    @bindable type = 'text';
     @bindable helpText = '';
     @bindable hasFocus = false;
     @bindable disabled = false;
     options = [
-        {id: 1, title: 'DIY', url: 'https://diy.org'},
-        {id: 2, title: 'Google', url: 'http://google.com'},
-        {id: 3, title: 'Yahoo', url: 'http://yahoo.com'}
+        { id: 1, title: 'DIY', url: 'https://diy.org' },
+        { id: 2, title: 'Google', url: 'http://google.com' },
+        { id: 3, title: 'Yahoo', url: 'http://yahoo.com' }
     ];
 
     constructor(element) {
         this.element = element;
+        this.hideEmptyResultsMessage();
     }
 
     attached() {
-        let el = $(this.element).find('select');
-        this.sel = el.selectize({
+        this.sel = $(this.selector).selectize({
             theme: 'links',
             maxItems: null,
             valueField: 'id',
             searchField: 'title',
             options: this.options,
             render: {
-                option: function(data, escape) {
+                option: function (data, escape) {
                     return '<div class="option">' +
-                            '<span class="title">' + escape(data.title) + '</span>' +
-                            '<span class="url">' + escape(data.url) + '</span>' +
+                        '<span class="title">' + escape(data.title) + '</span>' +
+                        '<span class="url">' + escape(data.url) + '</span>' +
                         '</div>';
                 },
-                item: function(data, escape) {
+                item: function (data, escape) {
                     return '<div class="item">' + escape(data.title) + '</div>';
                 }
             },
-            onChange: function(value) {
-                console.log("here!: " + value);
+            onChange: (value) => {
                 this.value = value;
-                let notice = new Event('change', { bubbles: true });
-                $(el)[0].dispatchEvent(notice);
+            },
+            onType: () => {
+                // this.displayEmptyResultsMessage();
+                // this.searched = (str.length == 0);
+                let selector = $(this.selector)[0].selectize;
+                if (selector.hasOptions || !selector.lastQuery) {
+                    this.hideEmptyResultsMessage();
+                  } else {
+                    this.displayEmptyResultsMessage();
+                  }
             }
         })
-
-        // this.value = this.sel[0].value;
-        // this.sel[0].selectize.addItem(this.value);
     }
 
     detached() {
-        this.sel[0].selectize.destroy();
+        $(this.selector)[0].selectize.destroy();
     }
+
+    clear() {
+        $(this.selector)[0].selectize.clear();
+    }
+
+    displayEmptyResultsMessage() {
+        $(this.empty).css('width', $(this.selector).width());
+        $(this.selector).addClass("dropdown-active");
+        $(this.empty).show();
+    }
+    
+    hideEmptyResultsMessage() {
+        $(this.empty).hide();
+    }
+
 }

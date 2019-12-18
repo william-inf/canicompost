@@ -1,13 +1,17 @@
 <template>
     <div class="form-group">
         <label>${label}</label>
-        <!-- <input disabled.bind="disabled" type="${type}" name="${name}" class="form-control ${errors ? 'is-invalid' : ''}" placeholder="${placeholder}" value.bind="value" focus.bind="hasFocus"> -->
-        <select class="form-control" id="exampleFormControlSelect1" value.bind="value" multiple>
-
+        <select ref="selector" class="form-control ${errors ? 'is-invalid' : ''}" id="select-${label}" value.bind="value" multiple>
         </select>
+        <div ref="empty" class="selectize-dropdown" style="display: none;">
+            <div class="selectize-dropdown-content">
+              <div class="no-results">No result</div>
+            </div>
+        </div>
         <div><small>${helpText}</small></div>
         <div if.bind="errors">
             <span class="text-danger" repeat.for="error of errors">${error}<br if.bind="!$last"></span>
         </div>
+        <span click.delegate="clear()">Clear</span>
     </div>
 </template>

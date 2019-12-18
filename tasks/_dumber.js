@@ -31,7 +31,12 @@ module.exports = dumber({
   // dumber-module-loader is injected automatically by dumber bundler after prepends.
   prepend: [
     // Promise polyfill for IE
-    "node_modules/promise-polyfill/dist/polyfill.min.js"
+    "node_modules/promise-polyfill/dist/polyfill.min.js",
+    "node_modules/jquery/dist/jquery.min.js",
+    "node_modules/microplugin/src/microplugin.js",
+    "node_modules/sifter/lib/sifter.js",
+    "node_modules/selectize/dist/js/selectize.min.js",
+    "src/scripts/selectize-config.js"
   ],
 
   // append after amd loader and all module definitions in entry bundle.

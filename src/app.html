@@ -6,18 +6,18 @@
     <header>
       <div slot="content">
         <validatable-selectize-tag 
-          placeholder="Tags" 
-          value.bind="model.value" 
+          value.bind="model.value"
+          searched.bind="searched"
           errors.bind="errors.tag_name"
           label="Tags"
-          type="text"
-          help-text="You can enter multiple tags, use comma [,] as delimiter">
+          help-text="You can enter multiple items, use comma [,] as delimiter">
         </validatable-selectize-tag>
       </div>
     </header>
     <content-body>
       <div slot="content">
-        ${model.value}
+        ${searched}
+        <span if.bind="searched && model.value.length == 0">None found</span>
       </div>
     </content-body>
   </div>
