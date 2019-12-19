@@ -77,6 +77,7 @@
     ]
   },
   "dependencies": {
+    "aurelia-animator-css": "^1.0.4",
     "aurelia-fetch-client": "^1.8.2",
     "bcx-validation": "^1.1.1",
     "bootstrap": "^4.4.1",

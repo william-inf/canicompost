@@ -40,3 +40,4 @@ Details in package.json -> scripts -> pretest & test.
 
 `npm test` already generetes code coverage report, you can open `coverage/lcov-report/index.html` for detailed report.
 
+  git config --global user.email "me@williamthom.as"

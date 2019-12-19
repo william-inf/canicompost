@@ -6,18 +6,14 @@ import 'selectize';
 @inject(Element)
 export class ValidatableSelectizeTag {
     @bindable({ defaultBindingMode: bindingMode.twoWay }) value;
-    @bindable({ defaultBindingMode: bindingMode.twoWay }) searched;
     @bindable errors;
     @bindable label;
     @bindable name;
+    @bindable placeholder;
     @bindable helpText = '';
     @bindable hasFocus = false;
     @bindable disabled = false;
-    options = [
-        { id: 1, title: 'DIY', url: 'https://diy.org' },
-        { id: 2, title: 'Google', url: 'http://google.com' },
-        { id: 3, title: 'Yahoo', url: 'http://yahoo.com' }
-    ];
+    @bindable options = []; 
 
     constructor(element) {
         this.element = element;
@@ -31,6 +27,7 @@ export class ValidatableSelectizeTag {
             valueField: 'id',
             searchField: 'title',
             options: this.options,
+            placeholder: this.placeholder,
             render: {
                 option: function (data, escape) {
                     return '<div class="option">' +
@@ -55,6 +52,9 @@ export class ValidatableSelectizeTag {
                     this.currentText = str;
                     this.displayEmptyResultsMessage();
                   }
+            },
+            onBlur: () => {
+                this.hideEmptyResultsMessage();
             }
         })
     }
@@ -64,16 +64,18 @@ export class ValidatableSelectizeTag {
     }
 
     clear() {
+        this.currentText = '';
         $(this.selector)[0].selectize.clear();
     }
 
     displayEmptyResultsMessage() {
-        $(this.empty).css('width', $(this.selector).width());
+        $(this.empty).css('width', $(this.inputgroup).width());
         $(this.selector).addClass("dropdown-active");
         $(this.empty).show();
     }
     
     hideEmptyResultsMessage() {
+        this.currentText = '';
         $(this.empty).hide();
     }
 

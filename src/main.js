@@ -1,10 +1,10 @@
 // To support async/await
 import 'regenerator-runtime/runtime';
-import 'scripts/selectize-config';
 
 export function configure(aurelia) {
   aurelia.use.feature('resources');
   aurelia.use.standardConfiguration();
+  aurelia.use.plugin('aurelia-animator-css');
   if (process.env.NODE_ENV === 'production') {
     aurelia.use.developmentLogging('warn');
   } else {

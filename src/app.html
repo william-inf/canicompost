@@ -1,23 +1,26 @@
 <template>
   <require from="./app.scss"></require>
-  <require from="bootstrap/dist/css/bootstrap.min.css"></require>
-  
+
   <div class="app">
     <header>
       <div slot="content">
-        <validatable-selectize-tag 
-          value.bind="model.value"
-          searched.bind="searched"
-          errors.bind="errors.tag_name"
-          label="Tags"
-          help-text="You can enter multiple items, use comma [,] as delimiter">
-        </validatable-selectize-tag>
+        <form>
+          <validatable-selectize-tag 
+            value.bind="model.value"
+            errors.bind="errors.tag_name"
+            options.bind="options"
+            label="Items"
+            placeholder="Search items"
+            help-text="You can enter multiple items, use comma [,] as delimiter">
+          </validatable-selectize-tag>
+        </form>
       </div>
     </header>
     <content-body>
       <div slot="content">
-        ${searched}
-        <span if.bind="searched && model.value.length == 0">None found</span>
+        <div repeat.for="value of values" if.bind="values">
+          <row-detail if.bind="value" detail.bind="optionForId(value)"></row-detail>
+        </div>
       </div>
     </content-body>
   </div>

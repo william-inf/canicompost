@@ -1,5 +1,9 @@
+@import url('https://fonts.googleapis.com/css?family=Monserrat:300,400,600,700');
+@import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 @import 'scss/variables';
+@import 'scss/animations';
 @import 'scss/selectize-overrides';
 @import 'scss/base';
 @import 'scss/header';
 @import 'scss/content-body';
+@import 'scss/forms';

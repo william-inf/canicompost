@@ -3,6 +3,7 @@ export function configure(config) {
     './elements/validateable-selectize-tag',
     './elements/header',
     './elements/content-body',
+    './elements/row-detail',
     './attributes/bootstrap-tooltip'
   ]);
 }

@@ -1,17 +1,25 @@
 <template>
-    <div class="form-group">
-        <label>${label}</label>
-        <select ref="selector" class="form-control ${errors ? 'is-invalid' : ''}" id="select-${label}" value.bind="value" multiple>
-        </select>
-        <div ref="empty" class="selectize-dropdown" style="display: none;">
-            <div class="selectize-dropdown-content">
-              <div class="no-results">No result for ${currentText}.</div>
-            </div>
-        </div>
-        <div><small>${helpText}</small></div>
-        <div if.bind="errors">
-            <span class="text-danger" repeat.for="error of errors">${error}<br if.bind="!$last"></span>
-        </div>
-        <span click.delegate="clear()">Clear</span>
+  <div class="form-group">
+    <label if.bind="(value.length == 0 || currentText.length == 0)">&nbsp;</label>
+    <label if.bind="(value.length > 0 || currentText.length > 0)" class="au-animate">Searching ${label}</label>
+    <div ref="inputgroup" class="input-group mb-1">
+      <div class="input-group-prepend">
+        <span class="input-group-text ${filter ? 'active' : ''}">
+          <i class="fa fa-search"></i>
+        </span>
+      </div>
+      <select ref="selector" class="form-control ${errors ? 'is-invalid' : ''}" id="select-${label}" value.bind="value"
+        multiple>
+      </select>
+      <button class="btn bg-transparent btn-invisible" style="margin-left: -40px; z-index: 100;"
+        show.bind="(value.length > 0 || currentText.length > 0)" click.delegate="clear()">
+        <i class="fas fa-times text-danger" style="font-size: 1rem;"></i>
+      </button>
     </div>
+    <div ref="empty" class="selectize-dropdown" style="display: none;">
+      <div class="selectize-dropdown-content">
+        <div class="no-results">No result for ${currentText}.</div>
+      </div>
+    </div>
+  </div>
 </template>

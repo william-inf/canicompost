@@ -1,0 +1,90 @@
+form {
+    .form-group {
+        label {
+            color: $gray-600;
+            font-weight: 400;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-size: 0.70rem;
+            &.is-invalid {
+                color: $red;
+                transition: color 1s;
+            }
+            &.au-enter-active {
+                -webkit-animation: fadeInSlide 0.3s;
+                animation: fadeInSlide 0.3s;
+            }
+            &.au-leave-active {
+                -webkit-animation: fadeOutSlide 0.3s;
+                animation: fadeOutSlide 0.3s;
+            }
+        }
+        input[type=text],
+        input[type=password],
+        input[type=search] {
+            &.form-control {
+                background-color: transparent;
+                border: none;
+                border-radius: 0px;
+                border-bottom: 1px solid $gray-400;
+                outline: none;
+                font-size: 1rem;
+                color: $white;
+                transition: border-color 1s;
+                &::placeholder {
+                    font-size: 0.7rem;
+                    color: $gray-400;
+                    text-transform: uppercase;
+                    letter-spacing: 2px;
+                    font-weight: 600;
+                }
+                &.is-invalid {
+                    border-color: $red;
+                }
+            }
+            &.active {
+                border-color: $blue;
+            }
+        }
+        select {
+            -webkit-appearance:none;
+            -moz-appearance: none; 
+            appearance: none;
+            background-color: transparent;
+            color: white;
+            border-color: $gray-400;
+            &:focus {
+                background-color: transparent;
+                color: white;
+            }
+        }
+        .errors {
+            span {
+                margin-left: 12px;
+                &.au-enter-active {
+                    -webkit-animation: fadeIn 1s;
+                    animation: fadeIn 1s;
+                }
+                &.au-leave-active {
+                    -webkit-animation: fadeOut 1s;
+                    animation: fadeOut 1s;
+                }
+            }
+        }
+        .input-group {
+            .input-group-text {
+                background-color: transparent;
+                border: none;
+                border-radius: 0;
+                border-bottom: 1px solid $gray-400;
+                transition: border-color 1s;
+                &.active {
+                    border-color: $blue;
+                }
+            }
+            .btn {
+                border: none;
+            }
+        }
+    }
+}

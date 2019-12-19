@@ -1,5 +1,5 @@
 $charcoal: #2B2D33;
-$blue:    #31B1C1;
+$blue:    #30A1C1;
 $pink:    #D16566;
 $red:     #DE6163;
 $orange:  #D56F59;
@@ -35,3 +35,6 @@ $cyan-dark: darken($cyan, 20%);
 $yellow-dark: darken($yellow, 20%);
 $blue-dark: darken($blue, 20%);
 $green-dark: darken($green, 20%);
+
+$theme-colors: ( "primary": $blue, "danger": $red, "secondary": $charcoal, "success": $green, "info": $cyan, "warning": $yellow, "light": $gray-300, "dark": $gray-900);
+$grid-columns: 24;

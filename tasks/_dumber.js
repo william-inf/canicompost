@@ -35,8 +35,7 @@ module.exports = dumber({
     "node_modules/jquery/dist/jquery.min.js",
     "node_modules/microplugin/src/microplugin.js",
     "node_modules/sifter/lib/sifter.js",
-    "node_modules/selectize/dist/js/selectize.min.js",
-    "src/scripts/selectize-config.js"
+    "node_modules/selectize/dist/js/selectize.min.js"
   ],
 
   // append after amd loader and all module definitions in entry bundle.
