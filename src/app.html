@@ -10,7 +10,7 @@
             errors.bind="errors.tag_name"
             options.bind="options"
             label="Items"
-            placeholder="Search items"
+            placeholder="Search"
             help-text="You can enter multiple items, use comma [,] as delimiter">
           </validatable-selectize-tag>
         </form>
@@ -18,8 +18,10 @@
     </header>
     <content-body>
       <div slot="content">
-        <div repeat.for="value of values" if.bind="values">
-          <row-detail if.bind="value" detail.bind="optionForId(value)"></row-detail>
+        <div class="row">
+          <div class="col-md-4 col-sm-12" repeat.for="value of values" if.bind="values">
+            <row-detail if.bind="value" detail.bind="optionForId(value)"></row-detail>
+          </div>
         </div>
       </div>
     </content-body>

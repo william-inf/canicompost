@@ -1,0 +1,44 @@
+row-detail {
+    .box {
+        &.green {
+            border-left: 0.5rem solid $green;
+
+        }
+        &.brown {
+            border-left: 0.5rem solid $brown;
+        }
+
+        background-color: $white;
+        margin-bottom: 1rem;
+        border-radius: 0.5rem;
+        padding: 1.5rem;
+
+        &.au-enter-active {
+            -webkit-animation: fadeInSlide 0.3s;
+            animation: fadeInSlide 0.3s;
+        }
+        &.au-leave-active {
+            -webkit-animation: fadeOutSlide 0.3s;
+            animation: fadeOutSlide 0.3s;
+        }
+
+        .sub-title {
+            color: $cyan;
+            letter-spacing: 0.5px;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .title {
+
+        }
+
+        .status {
+            margin-top: 0.5rem;
+            font-size: 1.5rem;
+            color: $cyan;
+
+        }
+    }
+}

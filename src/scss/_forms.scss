@@ -21,6 +21,7 @@ form {
         }
         input[type=text],
         input[type=password],
+        input[type=select-multiple],
         input[type=search] {
             &.form-control {
                 background-color: transparent;
@@ -37,6 +38,7 @@ form {
                     text-transform: uppercase;
                     letter-spacing: 2px;
                     font-weight: 600;
+                    padding-right: 2rem;
                 }
                 &.is-invalid {
                     border-color: $red;

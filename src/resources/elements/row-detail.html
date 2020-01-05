@@ -1,5 +1,19 @@
 <template>
-    <div if.bind="detail">
-        ${detail.title} - ${detail.url}
+    <div class="box ${detail.type} au-animate" if.bind="detail">
+        <div class="row">
+            <div class="col-9">
+                <div class="sub-title">
+                    ${detail.category}
+                </div>
+                <div class="title">
+                    ${detail.title}
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="status ${detail.type} text-right">
+                    <span><i class="fa fa-check"></i></span>
+                </div>
+            </div>
+        </div>
     </div>
 </template>

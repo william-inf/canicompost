@@ -25,14 +25,14 @@ export class ValidatableSelectizeTag {
             theme: 'links',
             maxItems: null,
             valueField: 'id',
-            searchField: 'title',
+            searchField: 'search_terms',
             options: this.options,
-            placeholder: this.placeholder,
+            placeholder: this.placeholder + '  ',
             render: {
                 option: function (data, escape) {
                     return '<div class="option">' +
                         '<span class="title">' + escape(data.title) + '</span>' +
-                        '<span class="url">' + escape(data.url) + '</span>' +
+                        '<span class="category">' + escape(data.category) + '</span>' +
                         '</div>';
                 },
                 item: function (data, escape) {
@@ -43,8 +43,6 @@ export class ValidatableSelectizeTag {
                 this.value = value;
             },
             onType: (str) => {
-                // this.displayEmptyResultsMessage();
-                // this.searched = (str.length == 0);
                 let selector = $(this.selector)[0].selectize;
                 if (selector.hasOptions || !selector.lastQuery) {
                     this.hideEmptyResultsMessage();
@@ -69,7 +67,7 @@ export class ValidatableSelectizeTag {
     }
 
     displayEmptyResultsMessage() {
-        $(this.empty).css('width', $(this.inputgroup).width());
+        $(this.empty).css('width', $(this.inputgroup).width() + 20);
         $(this.selector).addClass("dropdown-active");
         $(this.empty).show();
     }
